@@ -1,0 +1,183 @@
+.pcard {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  animation: fadeIn 0.5s ease both;
+  position: relative;
+}
+.pcard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 16px 40px rgba(0,0,0,0.6), var(--glow-blue);
+  border-color: var(--border2);
+}
+.pcard--added {
+  border-color: var(--success) !important;
+  box-shadow: 0 0 0 1px var(--success), 0 12px 32px rgba(76,175,121,0.2) !important;
+}
+
+/* Rarity shimmer on hover */
+.pcard::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, transparent 30%, rgba(255,215,0,0.04) 50%, transparent 70%);
+  opacity: 0;
+  transition: opacity 0.3s;
+  pointer-events: none;
+  border-radius: var(--radius-lg);
+}
+.pcard:hover::after { opacity: 1; }
+
+/* Image */
+.pcard__img-wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  background: var(--surface2);
+  overflow: hidden;
+}
+.pcard__img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+.pcard:hover .pcard__img { transform: scale(1.06); }
+
+/* Category badge */
+.pcard__cat {
+  position: absolute;
+  top: 8px; left: 8px;
+  background: rgba(13,13,26,0.82);
+  color: var(--yellow);
+  font-family: var(--font-mono);
+  font-size: 0.58rem;
+  letter-spacing: 0.08em;
+  padding: 0.22rem 0.6rem;
+  border-radius: 100px;
+  border: 1px solid rgba(255,215,0,0.2);
+  backdrop-filter: blur(6px);
+}
+
+/* In cart badge */
+.pcard__in-cart {
+  position: absolute;
+  top: 8px; right: 8px;
+  background: var(--yellow);
+  color: #0d0d1a;
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  font-weight: 700;
+  padding: 0.22rem 0.6rem;
+  border-radius: 100px;
+  animation: pulse 0.4s ease;
+}
+
+/* Limited badge */
+.pcard__limited {
+  position: absolute;
+  bottom: 8px; left: 8px;
+  background: linear-gradient(135deg, #b8860b, var(--yellow));
+  color: #0d0d1a;
+  font-family: var(--font-display);
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  padding: 0.2rem 0.6rem;
+  border-radius: 100px;
+}
+
+.pcard__sold-out {
+  position: absolute; inset: 0;
+  background: rgba(13,13,26,0.8);
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  color: var(--text-dim);
+  letter-spacing: 0.1em;
+  backdrop-filter: blur(4px);
+}
+
+/* Body */
+.pcard__body {
+  padding: 0.8rem 0.9rem 0.9rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  flex: 1;
+}
+.pcard__name {
+  font-size: 0.88rem;
+  font-weight: 800;
+  color: var(--text);
+  line-height: 1.3;
+}
+.pcard__desc {
+  font-size: 0.74rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+  flex: 1;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Footer */
+.pcard__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 0.6rem;
+  gap: 0.5rem;
+}
+.pcard__meta { display: flex; flex-direction: column; gap: 0.12rem; }
+.pcard__price {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  letter-spacing: 0.03em;
+  color: var(--yellow);
+  line-height: 1;
+  text-shadow: 0 0 12px rgba(255,215,0,0.35);
+}
+.pcard__stock { font-family: var(--font-mono); font-size: 0.58rem; color: var(--text-dim); }
+.pcard__stock--low { color: var(--red2); font-weight: 700; }
+
+/* Add button */
+.pcard__btn {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  background: var(--surface2);
+  color: var(--text);
+  border: 1px solid var(--border2);
+  font-size: 0.78rem;
+  font-weight: 800;
+  padding: 0.48rem 0.9rem;
+  border-radius: 100px;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.pcard__btn:hover:not(:disabled) {
+  background: var(--yellow);
+  color: #0d0d1a;
+  border-color: var(--yellow);
+  box-shadow: var(--glow-yellow);
+  transform: scale(1.04);
+}
+.pcard__btn--added {
+  background: var(--success) !important;
+  color: white !important;
+  border-color: var(--success) !important;
+}
+.pcard__btn:disabled { opacity: 0.3; cursor: not-allowed; }
+
+@media (max-width: 640px) {
+  .pcard__body { padding: 0.65rem 0.75rem 0.75rem; }
+  .pcard__name { font-size: 0.8rem; }
+  .pcard__price { font-size: 1.25rem; }
+  .pcard__btn { font-size: 0.72rem; padding: 0.4rem 0.75rem; }
+}
