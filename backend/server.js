@@ -10,7 +10,7 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 const allowedOrigins = process.env.NODE_ENV === 'production'
-  ? [process.env.FRONTEND_URL, 'https://runlin-psi.vercel.app']
+  ? [process.env.FRONTEND_URL, 'https://pokelin.vercel.app']
   : ['http://localhost:3000', 'http://localhost:3001'];
 
 app.use(cors({
