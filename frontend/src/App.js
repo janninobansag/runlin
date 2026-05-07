@@ -13,8 +13,9 @@ export default function App() {
           <Route path="/"         element={<Landing />} />
           <Route path="/menu"     element={<Menu />} />
           <Route path="/checkout" element={<Checkout />} />
-          <Route path="*"         element={<Navigate to="/" replace />} />
           <Route path="/admin" element={<Admin />} />
+          <Route path="*"         element={<Navigate to="/" replace />} />
+          
         </Routes>
       </BrowserRouter>
     </CartProvider>
