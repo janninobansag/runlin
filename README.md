@@ -1,6 +1,6 @@
-# 🍔 BITES — Kiosk Ordering System
+# 🍔 PokeShop — Kiosk Ordering System
 
-A full-stack MERN kiosk ordering web app with a landing page, product menu (20 items), shopping cart, and checkout — backed by a MongoDB Atlas database and a Node.js/Express REST API.
+A full-stack MERN kiosk ordering web app with a landing page, product menu (25 items), shopping cart, and checkout — backed by a MongoDB Atlas database and a Node.js/Express REST API.
 
 ---
 
